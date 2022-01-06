@@ -64,23 +64,23 @@ public class TestCases {
 	@Test
 	public void queSePuedanIncorporarDistintosVehiculos() throws ColitionException{		
 		
-			Mapa actual = new Mapa("Buenos Aires");
+		Mapa actual = new Mapa("Buenos Aires");
 			
-			actual.agregarVehiculo(new Auto("JJZ526", 5, 240, 10.40338, 1.17403));
-			actual.agregarVehiculo(new Moto("094AB5", 200, 50.40338, 2.5656));
-			actual.agregarVehiculo(new Auto("AAA001", 5, 100, 25.40338, 5.17403));
-			actual.agregarVehiculo(new Bicicleta(33.333, 8.12345));
-			actual.agregarVehiculo(new Auto("PPP333", 5, 240, 85.40338, 1.17403));
-			actual.agregarVehiculo(new Bicicleta(22.63258, 3.96542));
-			actual.agregarVehiculo(new Bicicleta(31.987452, 3.965482));
-			actual.agregarVehiculo(new Moto("088BB5", 100, 36.85421, 8.17403));
-			actual.agregarVehiculo(new Moto("094GG5", 90, 29.965482, 4.632152));
-			actual.agregarVehiculo(new Tren(15, 250, 100, 45.826541, 3.965412));
-			Boolean valorObtenido = actual.hayCoalicion();
-			assertEquals((Integer) 10, actual.getCantidadDeVehiculos());
-			assertFalse(valorObtenido);
+		actual.agregarVehiculo(new Auto("JJZ526", 5, 240, 10.40338, 1.17403));
+		actual.agregarVehiculo(new Moto("094AB5", 200, 50.40338, 2.5656));
+		actual.agregarVehiculo(new Auto("AAA001", 5, 100, 25.40338, 5.17403));
+		actual.agregarVehiculo(new Bicicleta(33.333, 8.12345));
+		actual.agregarVehiculo(new Auto("PPP333", 5, 240, 85.40338, 1.17403));
+		actual.agregarVehiculo(new Bicicleta(22.63258, 3.96542));
+		actual.agregarVehiculo(new Bicicleta(31.987452, 3.965482));
+		actual.agregarVehiculo(new Moto("088BB5", 100, 36.85421, 8.17403));
+		actual.agregarVehiculo(new Moto("094GG5", 90, 29.965482, 4.632152));
+		actual.agregarVehiculo(new Tren(15, 250, 100, 45.826541, 3.965412));
+		Boolean valorObtenido = actual.hayCoalicion();
+		assertEquals((Integer) 10, actual.getCantidadDeVehiculos());
+		assertFalse(valorObtenido);
 	}
-	
+
 	@Test (expected = ColitionException.class)
 	public void queChoquenDosVehiculos() throws ColitionException {	
 		
@@ -97,6 +97,14 @@ public class TestCases {
 		assertTrue(actual.hayCoalicion());
 		
 	}
-	
-	// Incorporar los test que considere necesarios para validar el funcionamiento en su conjunto
+
+	// Incorporar los test que considere necesarios para validar el funcionamiento
+	// n su conjunto
+
+	@Test (expected = VelocidadMaximaException.class)
+	public void queLanceExcepcionCuandoUnAutoTengaUnaInfraccionPorExcesoDeVelocidad() throws VelocidadMaximaException{
+		Auto auto = new Auto("ABC123", 4, 250, 45.1, 25.1);
+		auto.agregarInfraccion(Infracciones.VELOCIDAD_EXCEDIDA);
+		assertFalse(auto.superoVelocidadMaxima());
+    }
 }

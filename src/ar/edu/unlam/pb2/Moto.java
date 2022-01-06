@@ -3,7 +3,6 @@ package ar.edu.unlam.pb2;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 
 public class Moto extends MedioTransporte implements Multeable {
 
@@ -14,8 +13,6 @@ public class Moto extends MedioTransporte implements Multeable {
 	private Double pesoMaximoPermitido;
 	private List<Infracciones> listaInfracciones;
 
-	private Set<Persona> ocup;
-	
 	public Moto(String pat, Integer velMax,Double posX, Double posY) {
 		super(posX, posY);
 		// TODO Auto-generated constructor stub
@@ -23,22 +20,9 @@ public class Moto extends MedioTransporte implements Multeable {
 		this.velocidadMaxima = velMax;
 		this.pesoMaximoPermitido = 200d;
 		this.velocidadActual = 0;
-		this.ocup = new HashSet<>();
 		this.listaInfracciones = new ArrayList<>();
 	}
-	
-	public void agregarOcupante(Persona p) {
-		this.ocup.add(p);
-	}
-	
-	private Double getPesoTotalDeOcupantes() {
-		Double pesoTotal = 0d;
-		for (Persona persona : ocup) {
-			pesoTotal += persona.getPeso();
-		}
-		return pesoTotal;
-	}
-	
+
 	public String getPatente() {
 		return this.pat;
 	}
@@ -104,5 +88,4 @@ public class Moto extends MedioTransporte implements Multeable {
 		// TODO Auto-generated method stub
 		return Vehiculos.MOTOS;
 	}
-
 }

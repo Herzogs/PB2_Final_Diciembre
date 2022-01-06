@@ -1,9 +1,7 @@
 package ar.edu.unlam.pb2;
 
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 
 public class Auto extends MedioTransporte implements Multeable {
 	
@@ -12,8 +10,7 @@ public class Auto extends MedioTransporte implements Multeable {
 	private Integer velocidadMaxima;
 	private Integer velocidadActual;
 	private Double pesoMaximoPermitido;
-	private List<Infracciones> listaInfracciones;	
-	private Set<Persona> ocup;
+	private List<Infracciones> listaInfracciones;
 	
 	
 
@@ -26,19 +23,6 @@ public class Auto extends MedioTransporte implements Multeable {
 		this.pesoMaximoPermitido = 0d;
 		this.cantidadMaximaDePasajeros = maxPasajeros;
 		this.listaInfracciones = new ArrayList<>();
-		this.ocup = new HashSet<>();
-	}
-	
-	public void agregarOcupante(Persona p) {
-		this.ocup.add(p);
-	}
-	
-	private Double getPesoTotalDeOcupantes() {
-		Double pesoTotal = 0d;
-		for (Persona persona : ocup) {
-			pesoTotal += persona.getPeso();
-		}
-		return pesoTotal;
 	}
 	
 	public String getPatente() {
@@ -106,5 +90,4 @@ public class Auto extends MedioTransporte implements Multeable {
 		// TODO Auto-generated method stub
 		return Vehiculos.AUTOS;
 	}
-
 }
